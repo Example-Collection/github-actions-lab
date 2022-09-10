@@ -17,4 +17,4 @@ git add .
 git commit -m "Deploy product image(tag: $COMMIT_HASH)"
 
 # Create pull request and request review to sang-w0o
-gh pr create -B master -t "Deploy product image(tag: $COMMIT_HASH)" -m "Deploy product image(tag: $COMMIT_HASH)" -a @me
+gh pr create -B master --title "Deploy product image(tag: $COMMIT_HASH)" --body "Deploy product image(tag: $COMMIT_HASH)" -a "@me"
