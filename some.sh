@@ -19,4 +19,5 @@ git add .
 git commit -m "Deploy product image(tag: $COMMIT_HASH)"
 git push origin "deploy/$COMMIT_HASH"
 # Create pull request and request review to sang-w0o
+gh auth login
 gh pr create -B master --title "Deploy product image(tag: $COMMIT_HASH)" --body "Deploy product image(tag: $COMMIT_HASH)" -a "@me" -R PlanIt-Study/Planit-DevOps
