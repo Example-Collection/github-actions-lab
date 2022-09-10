@@ -1,6 +1,7 @@
 #!/bin/bash
 
 git config user.email "robbyra@gmail.com"
+git config user.name "sang-w0o"
 git config user.password $GHB_PAT
 
 mkdir DEVOPS_FOLDER
