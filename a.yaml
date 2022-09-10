@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: planit-product
-          image: 598334522273.dkr.ecr.ap-northeast-2.amazonaws.com/planit_product:7d531fc9720d27c1ce4f8b0fed7322c7ed5f00d1
+          image: 598334522273.dkr.ecr.ap-northeast-2.amazonaws.com/planit_product:0456389a3af4147d6d0489be83dcf1e1f571b186
           imagePullPolicy: Always
           envFrom:
             - secretRef:
