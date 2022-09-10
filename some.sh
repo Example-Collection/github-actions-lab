@@ -15,6 +15,6 @@ sed -i "s/598334522273.dkr.ecr.ap-northeast-2.amazonaws.com\/planit_product:.*/5
 git checkout -b "deploy/$COMMIT_HASH"
 git add .
 git commit -m "Deploy product image(tag: $COMMIT_HASH)"
-
+git push origin "deploy/$COMMIT_HASH"
 # Create pull request and request review to sang-w0o
 gh pr create -B master --title "Deploy product image(tag: $COMMIT_HASH)" --body "Deploy product image(tag: $COMMIT_HASH)" -a "@me"
