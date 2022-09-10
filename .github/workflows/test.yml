@@ -16,11 +16,11 @@ jobs:
         with:
           repository: Planit-Study/Planit-DevOps
           path: ./Planit-DevOps
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GHB_PAT }}
 
       - name: Create PR
         env:
-          GHB_PAT: ${{ secrets.GITHUB_PAT }}
+          GHB_PAT: ${{ secrets.GHB_PAT }}
           DEVOPS_REPO_URL: ${{ secrets.DEVOPS_REPO_URL }}
           COMMIT_HASH: ${{ github.sha }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
