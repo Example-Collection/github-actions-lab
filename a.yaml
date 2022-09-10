@@ -1,0 +1,102 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: planit-deployment
+  namespace: planit
+  labels:
+    app: planit
+spec:
+  replicas: 3
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: planit
+  template:
+    metadata:
+      labels:
+        app: planit
+    spec:
+      containers:
+        - name: planit-product
+          image: 598334522273.dkr.ecr.ap-northeast-2.amazonaws.com/planit_product:7d531fc9720d27c1ce4f8b0fed7322c7ed5f00d1
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: planit-secret
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 1
+              memory: 4096Mi
+            requests:
+              cpu: 1
+              memory: 4096Mi
+        - name: datadog-agent
+          image: datadog/agent:latest
+          ports:
+            - containerPort: 8126
+              name: traceport
+              protocol: TCP
+          env:
+            - name: DD_KUBERNETES_KUBELET_NODENAME
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: spec.nodeName
+            - name: DD_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: datadog-secret
+                  key: DD_API_KEY
+            - name: DD_SITE
+              valueFrom:
+                secretKeyRef:
+                  name: datadog-secret
+                  key: DD_SITE
+            - name: DD_EKS_FARGATE
+              valueFrom:
+                secretKeyRef:
+                  name: datadog-secret
+                  key: DD_EKS_FARGATE
+            - name: DD_APM_ENABLED
+              valueFrom:
+                secretKeyRef:
+                  name: datadog-secret
+                  key: DD_APM_ENABLED
+            - name: DD_ENV
+              valueFrom:
+                secretKeyRef:
+                  name: datadog-secret
+                  key: DD_ENV
+            - name: DD_SERVICE
+              valueFrom:
+                secretKeyRef:
+                  name: datadog-secret
+                  key: DD_SERVICE
+            - name: DD_VERSION
+              valueFrom:
+                secretKeyRef:
+                  name: datadog-secret
+                  key: DD_VERSION
+            - name: DD_PROFILING_ENABLED
+              valueFrom:
+                secretKeyRef:
+                  name: datadog-secret
+                  key: DD_PROFILING_ENABLED
+            - name: DD_APM_IGNORE_RESOURCES
+              valueFrom:
+                secretKeyRef:
+                  name: datadog-secret
+                  key: DD_APM_IGNORE_RESOURCES
+            - name: DD_LOGS_INJECTION
+              valueFrom:
+                secretKeyRef:
+                  name: datadog-secret
+                  key: DD_LOGS_INJECTION
+  strategy:
+    blueGreen:
+      activeService: planit-service
+      previewService: planit-service-preview
+      autoPromotionEnabled: true

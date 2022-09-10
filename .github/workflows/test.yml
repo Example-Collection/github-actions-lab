@@ -1,0 +1,24 @@
+on: [push, workflow_dispatch]
+
+name: Test creation of Pull Request
+
+jobs:
+  test:
+    name: Test if PR is created
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Create PR
+        env:
+          - name: GHB_PAT
+            value: ${{ secrets.GITHUB_PAT }}
+          - name: DEVOPS_REPO_URL
+            value: ${{ secrets.DEVOPS_REPO_URL }}
+          - name: COMMIT_HASH
+            value: ${{ github.sha }}
+        run: |
+          chmod +x ./some.sh
+          ./some.sh

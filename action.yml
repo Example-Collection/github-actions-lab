@@ -1,0 +1,9 @@
+name: "CPRAR"
+description: "Create pull requests to anothor repository"
+author: "Sangwoo Ra<robbyra@gmail.com>"
+
+branding:
+  icon: "box"
+  color: "blue"
+
+runs:
