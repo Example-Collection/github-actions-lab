@@ -1,8 +1,8 @@
 #!/bin/bash
 
-git config user.email "robbyra@gmail.com"
-git config user.name "sang-w0o"
-git config user.password $GHB_PAT
+git config --global user.email "robbyra@gmail.com"
+git config --global user.name "sang-w0o"
+git config --global user.password $GHB_PAT
 
 mkdir DEVOPS_FOLDER
 git clone $DEVOPS_REPO_URL ./DEVOPS_FOLDER

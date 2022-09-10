@@ -16,6 +16,7 @@ jobs:
           GHB_PAT: ${{ secrets.GITHUB_PAT }}
           DEVOPS_REPO_URL: ${{ secrets.DEVOPS_REPO_URL }}
           COMMIT_HASH: ${{ github.sha }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           chmod +x ./some.sh
           ./some.sh
