@@ -3,8 +3,9 @@
 git config --global user.name sang-w0o
 git config --global user.password $GHB_PAT
 
-git clone $DEVOPS_REPO_URL .
-cd ./k8s
+mkdir DEVOPS_FOLDER
+git clone $DEVOPS_REPO_URL ./DEVOPS_FOLDER
+cd ./DEVOPS_FOLDER/k8s
 
 # line to change: image: 598334522273.dkr.ecr.ap-northeast-2.amazonaws.com/planit_product:*
 # change image tag to $COMMIT_HASH
