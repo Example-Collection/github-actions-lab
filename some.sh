@@ -1,7 +1,7 @@
 #!/bin/bash
 
 git config --global user.name sang-w0o
-git config --global --add user.password $GHB_PAT
+git config --global user.password $GHB_PAT
 
 git clone $DEVOPS_REPO_URL .
 cd ./k8s
