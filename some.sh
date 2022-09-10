@@ -1,7 +1,7 @@
 #!/bin/bash
 
-git config --global user.email "robbyra@gmail.com"
-git config --global user.password $GHB_PAT
+git config user.email "robbyra@gmail.com"
+git config user.password $GHB_PAT
 
 mkdir DEVOPS_FOLDER
 git clone $DEVOPS_REPO_URL ./DEVOPS_FOLDER
@@ -9,7 +9,7 @@ cd ./DEVOPS_FOLDER/k8s
 
 # line to change: image: 598334522273.dkr.ecr.ap-northeast-2.amazonaws.com/planit_product:*
 # change image tag to $COMMIT_HASH
-sed -i "s/598334522273.dkr.ecr.ap-northeast-2.amazonaws.com\/planit_product:.*/598334522273.dkr.ecr.ap-northeast-2.amazonaws.com\/planit_product:$COMMIT_HASH/" planit-product-deployment.yaml
+sed -i "s/598334522273.dkr.ecr.ap-northeast-2.amazonaws.com\/planit_product:.*/598334522273.dkr.ecr.ap-northeast-2.amazonaws.com\/planit_product:$COMMIT_HASH/" a.yaml
 
 git checkout -b "deploy/$COMMIT_HASH"
 git add .
