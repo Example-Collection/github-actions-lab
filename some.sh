@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git config --global user.name sang-w0o
+git config --global user.email "robbyra@gmail.com"
 git config --global user.password $GHB_PAT
 
 mkdir DEVOPS_FOLDER
